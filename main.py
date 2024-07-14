@@ -3,6 +3,8 @@ import random
 
 def main():
     game_loop = True
+    player_score = 0
+    comp_score = 0
 
     while game_loop:
 
@@ -14,7 +16,7 @@ def main():
               (____)
         ---.__(___)
         '''
-        
+
         paper = '''
             _______
         ---'   ____)____
@@ -23,7 +25,7 @@ def main():
                  _______)
         ---.__________)
         '''
-        
+
         scissors = '''
             _______
         ---'   ____)____
@@ -33,7 +35,7 @@ def main():
         ---.__(___)
         '''
 
-        choice = input("What do you choose? Type 0 for Rock, 1 for Paper, or 2 for Scissors.")
+        choice = input("What do you choose? Type 0 for Rock, 1 for Paper, or 2 for Scissors.\n")
         if choice == "0":
             choice = rock
         elif choice == "1":
@@ -66,18 +68,21 @@ def main():
             print(paper)
             print('Player2 chose: ' + str("paper"))
             print("You Lose!")
+            comp_score += 1
         elif choice == rock and comp_choice == scissors:
             print(rock)
             print('Player1 chose: ' + str("rock"))
             print(scissors)
             print('Player2 chose: ' + str("scissors"))
             print("You Win!")
+            player_score += 1
         elif choice == paper and comp_choice == rock:
             print(paper)
             print('Player1 chose: ' + str("paper"))
             print(rock)
             print('Player2 chose: ' + str("rock"))
             print("You Win!")
+            player_score += 1
         elif choice == paper and comp_choice == paper:
             print(paper)
             print('Player1 chose: ' + str("paper"))
@@ -90,25 +95,33 @@ def main():
             print(scissors)
             print('Player2 chose: ' + str("scissors"))
             print("You Lose!")
+            comp_score += 1
         elif choice == scissors and comp_choice == rock:
             print(scissors)
             print('Player1 chose: ' + str("scissors"))
             print(rock)
             print('Player2 chose: ' + str("rock"))
             print("You Lose!")
+            comp_score += 1
         elif choice == scissors and comp_choice == paper:
             print(scissors)
             print('Player1 chose: ' + str("scissors"))
             print(paper)
             print('Player2 chose: ' + str("paper"))
             print("You Win!")
+            player_score += 1
         elif choice == scissors and comp_choice == scissors:
             print(scissors)
             print('Player1 chose: ' + str("scissors"))
             print(scissors)
             print('Player2 chose: ' + str("scissors"))
             print("tie!")
+        else:
+            print("You lose!")
+            comp_score += 1
 
+        print(f"Player 1 score: {player_score}")
+        print(f"Player 2 score: {comp_score}\n")
         play_again = input("Play again? (y/n)")
         if play_again.lower() == "y" or play_again.lower() == "yes":
             game_loop = True
